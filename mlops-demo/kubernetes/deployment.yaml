@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mlops-demo
-        image: your-docker-image:latest
+        image: growwithtech/mlops-demo:latest
         ports:
         - containerPort: 5000
         env:
