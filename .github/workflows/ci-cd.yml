@@ -35,14 +35,18 @@ jobs:
         echo "Updated image tag in manifest to $IMAGE_TAG"
     
     - name: Commit Updated Manifest
+      env:
+        TOKEN: ${{ secrets.MANIFEST_UPDATER_TOKEN }} # Must be a PAT with repo access
       run: |
         pwd
         ls -ltr */*
         git config user.name "growwithtech01"
         git config user.email "growwithtechzone@gmail.com"
+
+        # Authenticate using the token
+        git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
+
         git add ./mlops-demo/kubernetes/deployment.yaml
         git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
         git push origin main
-      env:
-        GITHUB_TOKEN: ${{ secrets.MANIFEST_UPDATER_TOKEN }} # or use PERSONAL_TOKEN if pushing to a different repo
 
