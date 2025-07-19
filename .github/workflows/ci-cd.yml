@@ -36,8 +36,10 @@ jobs:
     
     - name: Commit Updated Manifest
       run: |
-        git config user.name "github-actions"
-        git config user.email "github-actions@github.com"
+        pwd
+        ls -ltr */*
+        git config user.name "growwithtech01"
+        git config user.email "growwithtechzone@gmail.com"
         git add ./mlops-demo/k8s/deployment.yaml
         git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
         git push origin main
