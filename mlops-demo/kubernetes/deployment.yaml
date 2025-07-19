@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mlops-demo
-        image: growwithtech/mlops-demo:16
+        image: growwithtech/mlops-demo:17
         ports:
         - containerPort: 5000
         env:
