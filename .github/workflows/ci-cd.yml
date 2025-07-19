@@ -31,7 +31,7 @@ jobs:
 
     - name: Update Kubernetes Manifest
       run: |
-        sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$IMAGE_TAG|g" ./mlops-demo/k8s/deployment.yaml
+        sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$IMAGE_TAG|g" ./mlops-demo/kubernetes/deployment.yaml
         echo "Updated image tag in manifest to $IMAGE_TAG"
     
     - name: Commit Updated Manifest
@@ -40,7 +40,7 @@ jobs:
         ls -ltr */*
         git config user.name "growwithtech01"
         git config user.email "growwithtechzone@gmail.com"
-        git add ./mlops-demo/k8s/deployment.yaml
+        git add ./mlops-demo/kubernetes/deployment.yaml
         git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
         git push origin main
       env:
