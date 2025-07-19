@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 # Load the dataset
-data = pd.read_csv('/app/data/dataset.csv')
+data = pd.read_csv('data/dataset.csv')
 
 # Preprocess the data
 X = data.drop('label', axis=1)  # Features
