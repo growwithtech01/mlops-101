@@ -29,24 +29,24 @@ jobs:
         docker push growwithtech/mlops-demo:$IMAGE_TAG
         docker push growwithtech/mlops-demo:latest
 
-    - name: Update Kubernetes Manifest
-      run: |
-        sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$IMAGE_TAG|g" ./mlops-demo/kubernetes/deployment.yaml
-        echo "Updated image tag in manifest to $IMAGE_TAG"
+    # - name: Update Kubernetes Manifest
+    #   run: |
+    #     sed -i "s|image: $IMAGE_NAME:.*|image: $IMAGE_NAME:$IMAGE_TAG|g" ./mlops-demo/kubernetes/deployment.yaml
+    #     echo "Updated image tag in manifest to $IMAGE_TAG"
     
-    - name: Commit Updated Manifest
-      env:
-        TOKEN: ${{ secrets.MANIFEST_UPDATER_TOKEN }} # Must be a PAT with repo access
-      run: |
-        pwd
-        ls -ltr */*
-        git config user.name "growwithtech01"
-        git config user.email "growwithtechzone@gmail.com"
+    # - name: Commit Updated Manifest
+    #   env:
+    #     TOKEN: ${{ secrets.MANIFEST_UPDATER_TOKEN }} # Must be a PAT with repo access
+    #   run: |
+    #     pwd
+    #     ls -ltr */*
+    #     git config user.name "growwithtech01"
+    #     git config user.email "growwithtechzone@gmail.com"
 
-        # Authenticate using the token
-        git remote set-url origin https://x-access-token:${TOKEN}@github.com/growwithtech01/mlops-101
+    #     # Authenticate using the token
+    #     git remote set-url origin https://x-access-token:${TOKEN}@github.com/growwithtech01/mlops-101
 
-        git add ./mlops-demo/kubernetes/deployment.yaml
-        git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
-        git push origin main
+    #     git add ./mlops-demo/kubernetes/deployment.yaml
+    #     git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
+    #     git push origin main
 
