@@ -44,7 +44,7 @@ jobs:
         git config user.email "growwithtechzone@gmail.com"
 
         # Authenticate using the token
-        git remote set-url origin https://x-access-token:${TOKEN}@github.com/${{ github.repository }}
+        git remote set-url origin https://x-access-token:${TOKEN}@github.com/growwithtech01/mlops-101
 
         git add ./mlops-demo/kubernetes/deployment.yaml
         git commit -m "Update image tag to $IMAGE_TAG [ci skip]" || echo "No changes to commit"
