@@ -17,4 +17,5 @@ EXPOSE 5000
 ENV FLASK_APP=predict.py
 
 # Run the application
-CMD ["python", "predict.py"]
+CMD ["sh", "-c", "python train.py && python predict.py"]
+#CMD ["python", "predict.py"]
